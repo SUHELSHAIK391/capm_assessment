@@ -1,0 +1,94 @@
+###get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+###get the service meta document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###get employees data
+http://localhost:4004/odata/v4/CatalogService/employee
+
+###Get all the Employees whose name starts with ‘S’.
+http://localhost:4004/odata/v4/CatalogService/employee?$filter=startswith(nameFirst,'S')
+
+###Get the top 2 employees, use orderby salaryAmount.
+http://localhost:4004/odata/v4/CatalogService/employee?$orderby=salaryAmount desc&$top=2
+
+###
+POST http://localhost:4004/odata/v4/CatalogService/employee
+Content-Type: application/json
+Accept: application/json
+
+{
+      "nameFirst": "Suhel",
+      "nameMiddle": null,
+      "nameLast": "Mascedonian",
+      "Email": "sally.spring@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 40999,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+}
+
+###CREATE an employee with salary >50000 & currency code USD.
+
+POST http://localhost:4004/odata/v4/CatalogService/employee
+Content-Type: application/json
+Accept: application/json
+
+{
+      "nameFirst": "praneh",
+      "nameMiddle": null,
+      "nameLast": "Kumar",
+      "Email": "tammineni@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 50000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+}
+
+
+###CREATE an employee with salary <50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/CatalogService/employee
+Content-Type: application/json
+Accept: application/json
+
+{
+      "nameFirst": "praneh",
+      "nameMiddle": null,
+      "nameLast": "Kumar",
+      "Email": "tammineni@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "EUR",
+      "salaryAmount": 50000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+}
+
+###
+PATCH http://localhost:4004/odata/v4/CatalogService/employee/02BD2137-0890-1EEA-A6C2-BB55C197E7FB
+Content-Type: application/json
+ 
+{
+    "bankId": "5100685",
+    "salaryAmount": 5549,
+    "Currency_code": "USD"
+}
+###
+
+PATCH http://localhost:4004/odata/v4/CatalogService/employee/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+ 
+{
+  "nameLast": "suhel",
+  "nameInitials": null,
+  "Currency_code":"USD",
+  "loginName":"suheuiwk"
+}
+###
+
+DELETE http://localhost:4004/odata/v4/CatalogService/employee/02BD2137-0890-1EEA-A6C2-BB55C19887FB
